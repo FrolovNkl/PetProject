@@ -13,3 +13,16 @@ docker run -d <container name> - Запускает контейнер в фон
 docker attach <container id or name> - Прикрепляет существующий контейнер к терминалу
 
 Ctrl + C - Выход из контейнера, если он прикреплён к терминалу
+
+
+Docker run:
+docker run <name:version> - запустить контейнер нужной версии
+docker run --name <your nam> <name> - запустить контейнер, задав ему имя
+docker run -it <command name> - запустить контейнер и вывести вывод в терминал
+            -i - связать стандартный ввод хоста со стандартным вводом контейнера
+            -t - связать стандартный вывод хоста со стандартным выводом контейнера
+echo 'qwe' | docker run -i <name> - передать на ввод контейнеру строку qwe
+docker run -p 80:5000 <name> - сопоставить порт 80 хоста порту 5000 в контейнере
+docker run -v /opt/datadir/:/var/lib/mysql <name> - смонтировать каталог /opt/datadir/ хоста в каталог /var/lib/mysql в котнейнере
+docker inspect <name> - детальная информация о контейнере
+docker logs <name> - вывести стандартный вывод контейнера
