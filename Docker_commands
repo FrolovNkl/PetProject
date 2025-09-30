@@ -1,28 +1,39 @@
 image - Это образ докера, а не картинка
 
-docker run <container name> - Запускает контейнер прикрепляя его к терминалу
-docker ps - Выводит список запущенных контейнеров и информацию о них
-docker ps -a - Выводит список всех контейнеров и информацию о них (и запущенных, и не запущенных)
-docker stop <container id or name> - Останавливает контейнер
-docker rm <container id or name> - Удаляет контейнер
-docker images - Выводит список образов на докер хосте
-docker rmi <image id or name> - Удаляет образ (перед уничтожением образа нужно остановить и удалить все связанные с ним контейнеры)
-docker pull <image name> - Скачивает образ, но не запускает его
-docker exec <container id or name> <command> - Выполняет команду в существующем контейнере на докер хосте
-docker run -d <container name> - Запускает контейнер в фоновом режиме
-docker attach <container id or name> - Прикрепляет существующий контейнер к терминалу
+docker run <container name>                    # Запускает контейнер прикрепляя его к терминалу
+docker ps                                      # Выводит список запущенных контейнеров и информацию о них
+docker ps -a                                   # Выводит список всех контейнеров и информацию о них (и запущенных, и не запущенных)
+docker stop <container id or name>             # Останавливает контейнер
+docker rm <container id or name>               # Удаляет контейнер
+docker images                                  # Выводит список образов на докер хосте
+docker rmi <image id or name>                  # Удаляет образ (перед уничтожением образа нужно остановить и удалить все связанные с ним контейнеры)
+docker pull <image name>                       # Скачивает образ, но не запускает его
+docker exec <container id or name> <command>   # Выполняет команду в существующем контейнере на докер хосте
+docker run -d <container name>                 # Запускает контейнер в фоновом режиме
+docker attach <container id or name>           # Прикрепляет существующий контейнер к терминалу
 
-Ctrl + C - Выход из контейнера, если он прикреплён к терминалу
+Ctrl + C  # Выход из контейнера, если он прикреплён к терминалу
 
 
 Docker run:
-docker run <name:version> - запустить контейнер нужной версии
-docker run --name <your nam> <name> - запустить контейнер, задав ему имя
-docker run -it <command name> - запустить контейнер и вывести вывод в терминал
-            -i - связать стандартный ввод хоста со стандартным вводом контейнера
-            -t - связать стандартный вывод хоста со стандартным выводом контейнера
-echo 'qwe' | docker run -i <name> - передать на ввод контейнеру строку qwe
-docker run -p 80:5000 <name> - сопоставить порт 80 хоста порту 5000 в контейнере
-docker run -v /opt/datadir/:/var/lib/mysql <name> - смонтировать каталог /opt/datadir/ хоста в каталог /var/lib/mysql в котнейнере
-docker inspect <name> - детальная информация о контейнере
-docker logs <name> - вывести стандартный вывод контейнера
+docker run <name:version>                          # запустить контейнер нужной версии
+docker run --name <your nam> <name>                # запустить контейнер, задав ему имя
+docker run -it <command name>                      # запустить контейнер и вывести вывод в терминал
+            -i                                     # связать стандартный ввод хоста со стандартным вводом контейнера
+            -t                                     # связать стандартный вывод хоста со стандартным выводом контейнера
+echo 'qwe' | docker run -i <name>                  # передать на ввод контейнеру строку qwe
+docker run -p 80:5000 <name>                       # сопоставить порт 80 хоста порту 5000 в контейнере
+docker run -v /opt/datadir/:/var/lib/mysql <name>  # смонтировать каталог /opt/datadir/ хоста в каталог /var/lib/mysql в котнейнере
+docker inspect <name>                              # детальная информация о контейнере
+docker logs <name>                                 # вывести стандартный вывод контейнера
+
+
+команды для очистки: 
+
+docker system df             # просмотр занятого пространства
+docker volume prune          # очистка томов
+docker container prune       # очистка контейнеров
+docker image prune           # очистка образов
+docker network prune         # очистка сетей
+docker system prune          # очистка всего и сразу
+docker system prune    -af   # очистка всего и сразу, без подтверждений
